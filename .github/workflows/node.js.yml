@@ -28,20 +28,22 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+
     - name: send dingtalk message
       uses: ghostoy/dingtalk-action@master
       with:
-       webhook: ${{ secrets.DINGTALK_WEBHOOK}}
-       msgtype: markdown
-       content: |
-        {
-          "title": "New push",
-          "text": "commit: ${{ github.sha }}"
-        }
-      at: |
-        {
-          "atMobiles": [
-          "1234567890"
-          ],
-          "isAtAll": false
-       }
+        webhook: ${{ secrets.DINGTALK_WEBHOOK}}
+        msgtype: markdown
+        content: |
+          {
+             "title": "New push",
+             "text": "commit: ${{ github.sha }}"
+          }
+        at: |
+          {
+            "atMobiles": [
+            "1234567890"
+            ],
+           "isAtAll": false
+          }
